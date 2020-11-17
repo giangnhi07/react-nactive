@@ -1,24 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, ScrollView, View } from 'react-native';
+import { FlatList, StyleSheet, Text, ScrollView, View } from 'react-native';
 import CategoryListItem from './components/CategoryListItem';
 
-export default function App() {
-	return (
-		<View style={styles.container}>
-			<ScrollView style={{ paddingLeft: 16, paddingRight: 16 }}>
-				<CategoryListItem />
-				<CategoryListItem />
-				<CategoryListItem />
-				<CategoryListItem />
-				<CategoryListItem />
-				<CategoryListItem />
-				<CategoryListItem />
-			</ScrollView>
+export default class App extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			categories: [
+				{ id: 1, name: 'Dụng cụ trượt tuyết' },
+				{ id: 2, name: 'Quần áo trượt tuyết' },
+				{ id: 3, name: 'Kính mũ' },
+			],
+		};
+	}
 
-			<StatusBar style="auto" />
-		</View>
-	);
+	render() {
+		const { categories } = this.state;
+		return (
+			<FlatList
+				data={categories}
+				renderItem={({ item }) => <CategoryListItem category={item} />}
+				keyExtractor={(item) => `${item.id}`}
+				contentContainerStyle={{ paddingLeft: 16, paddingRight: 16 }}
+			/>
+		);
+	}
 }
 
 const styles = StyleSheet.create({

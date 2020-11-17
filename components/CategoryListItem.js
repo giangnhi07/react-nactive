@@ -3,9 +3,10 @@ import { Image, Text, View, StyleSheet } from 'react-native';
 import SkiImage from '../assets/ski.png';
 
 export default function CategoryListItem(props) {
+	const { category } = props;
 	return (
 		<View style={style.container}>
-			<Text style={style.title}>CategoryListItem</Text>
+			<Text style={style.title}>{category.name}</Text>
 			<Image source={SkiImage} style={style.categoryImage} />
 		</View>
 	);
