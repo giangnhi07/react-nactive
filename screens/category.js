@@ -1,10 +1,13 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import AppNavigation from './AppNavigation';
+import { StyleSheet, Text, View } from 'react-native';
 
-export default class App extends React.Component {
+export default class Category extends React.Component {
 	render() {
-		return <AppNavigation />;
+		return (
+			<View>
+				<Text>Category</Text>
+			</View>
+		);
 	}
 }
 
